@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fedi-tag-finder</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>fedi-tag-finder</h1>
+  <p class="tagline">Paste a Mastodon post → get the 3 highest-reach hashtags appended.</p>
+</header>
+
+<main>
+  <section class="settings">
+    <details>
+      <summary>Settings</summary>
+      <label>
+        Anthropic API key
+        <input type="password" id="api-key" placeholder="sk-ant-..." autocomplete="off">
+      </label>
+      <p class="hint">
+        Stored in your browser's localStorage. Used directly from the browser via
+        <code>anthropic-dangerous-direct-browser-access</code>. Don't use a shared machine.
+        Get a key at <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a>.
+      </p>
+    </details>
+  </section>
+
+  <section class="composer">
+    <label for="post">Your post draft</label>
+    <textarea id="post" rows="8" placeholder="Just made a new track using AI tools. Generative beats and ambient pads, all from text prompts."></textarea>
+    <button id="go" type="button">Find tags &amp; append</button>
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="output" id="output-section" hidden>
+    <label for="result">Post with tags appended</label>
+    <textarea id="result" rows="10" readonly></textarea>
+    <button id="copy" type="button">Copy</button>
+    <details class="debug">
+      <summary>Candidates considered</summary>
+      <ul id="candidates"></ul>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <p>Tag volumes from <a href="https://mastodon.social" target="_blank" rel="noopener">mastodon.social</a> (7-day uses).</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

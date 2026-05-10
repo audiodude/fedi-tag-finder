@@ -1,0 +1,107 @@
+:root {
+  --bg: #f4f1ea;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #c75d3a;
+  --border: #d8d2c4;
+  --card: #fffdf7;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+header, main, footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.tagline { color: var(--muted); margin: 0; }
+
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+textarea, input[type="password"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+textarea { resize: vertical; }
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.status {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-style: italic;
+  min-height: 1.2em;
+}
+
+.status.error { color: #b00020; font-style: normal; }
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+}
+
+.hint code {
+  background: var(--bg);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.debug { margin-top: 1rem; }
+.debug ul { padding-left: 1.25rem; color: var(--muted); font-size: 0.9rem; }
+.debug li.picked { color: var(--accent); font-weight: bold; }
+
+footer { color: var(--muted); font-size: 0.85rem; text-align: center; }
+footer a { color: var(--accent); }
