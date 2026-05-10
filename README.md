@@ -40,9 +40,35 @@ No build step. Three files: `index.html`, `styles.css`, `app.js`.
 
 ## Deployment
 
-Pushes to the `release` branch deploy to Cloudflare Pages via GitHub Actions (see `.github/workflows/deploy.yml`).
+Live at **https://tags.x-5.dev/**.
 
-To deploy: `git checkout release && git merge main && git push`
+Pushes to the `release` branch deploy to Cloudflare Pages via GitHub Actions (see `.github/workflows/deploy.yml`). To ship: `git checkout release && git merge main && git push`. Deploys take ~25 seconds.
+
+### Setting up your own deploy
+
+If you fork this repo:
+
+1. Create a Cloudflare Pages project (Direct Upload mode, no Git integration needed):
+   ```sh
+   curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects" \
+     -H "Authorization: Bearer $CF_API_TOKEN" -H "Content-Type: application/json" \
+     --data '{"name":"your-project-name","production_branch":"release"}'
+   ```
+
+2. Set GitHub Actions secrets on your repo:
+   ```sh
+   gh secret set CLOUDFLARE_API_TOKEN --body "$CF_API_TOKEN"
+   gh secret set CLOUDFLARE_ACCOUNT_ID --body "$CF_ACCOUNT_ID"
+   ```
+   The token needs `Account → Cloudflare Pages → Edit` permission.
+
+3. Update `--project-name=fedi-tag-finder` in `.github/workflows/deploy.yml` to match your project.
+
+4. Push to `release` to trigger the first deploy.
+
+### Custom domain
+
+If using Cloudflare DNS, add the domain to the Pages project and a proxied CNAME pointing at `<project>.pages.dev`. Cert issuance takes <1 minute. With a non-Cloudflare DNS provider you'll also need the verification TXT record from the Pages project status.
 
 ## License
 
