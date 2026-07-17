@@ -1,6 +1,6 @@
 const MASTODON = 'https://mastodon.social';
 const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
-const MODEL = 'claude-haiku-4-5';
+const MODEL = 'claude-sonnet-5';
 const TOP_N = 3;
 
 const SYSTEM_PROMPT = `You suggest Mastodon hashtag candidates for a user's post.
