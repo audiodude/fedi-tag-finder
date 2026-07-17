@@ -2,7 +2,7 @@
 
 Paste a Mastodon post draft. Get the 3 highest-reach hashtags appended.
 
-A static, browser-only tool. Uses Claude Haiku 4.5 to extract hashtag candidates from your post text, then ranks them by real 7-day usage from `mastodon.social`'s `/api/v1/tags/:name` endpoint, and rewrites the post with the top 3 appended.
+A static, browser-only tool. Uses Claude Sonnet 5 to extract hashtag candidates from your post text, then ranks them by real 7-day usage from `mastodon.social`'s `/api/v1/tags/:name` endpoint, and rewrites the post with the top 3 appended.
 
 ## Usage
 
@@ -17,7 +17,7 @@ Existing `#hashtags` in your draft are stripped before suggestion — the app pi
 ```
 post text
   → strip existing #tags
-  → Claude Haiku 4.5 extracts ~8-15 candidate hashtags (with prompt caching)
+  → Claude Sonnet 5 extracts ~8-15 candidate hashtags (with prompt caching)
   → fetch /api/v1/tags/:name from mastodon.social for each (in parallel)
   → sort by 7-day uses
   → append top 3 to the post
